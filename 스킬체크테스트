@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Solution {
+	public static boolean isSorted(int[] a) {
+		for(int i=0;i<a.length-1;i++) {
+			if(a[i]==-1&&a[i+1]!=-1)
+				return false;
+			
+			if(a[i]>a[i+1]&&a[i+1]!=-1) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+    public static int solution(String skill, String[] skill_trees) {
+        int answer = 0;
+        char[] c = skill.toCharArray();
+        int[] ci = new int[c.length];
+        
+        for(String skill_tree:skill_trees) {
+        	for(int i=0;i<c.length;i++) {
+        		int idx = skill_tree.indexOf(c[i]+"");
+        		ci[i]=idx;
+        	}
+	
+        	if(isSorted(ci)) {
+        		answer++;
+        	}
+        }
+        
+        return answer;
+    }
+}
