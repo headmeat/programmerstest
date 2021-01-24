@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+	public long solution(int w, int h) {
+        long answer = (long)w*h;
+        
+        answer = answer - (w+h-gcd(w, h));
+        
+        return answer;
+    }
+	
+	public int gcd(int x, int y) {
+		int big = (x>y)?x:y;
+		int small = (x>y)?y:x;
+		int nmg;
+		
+		do {
+			nmg = big%small;
+			
+			if(nmg!=0) {
+				big = small;
+				small = nmg;
+			}
+		}while(nmg!=0);
+		
+		return small;
+	}
+}
